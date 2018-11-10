@@ -62,8 +62,8 @@ void Dialog2::newFunc()
 
         do{
             i++;
-            k=0;
-            for(j=1;j<=i;j++)
+            k=2;
+            for(j=2;j<(i/2)+1;j++)
             {
                 if((((int)(i/j))*j)==i)k++;
             }

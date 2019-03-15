@@ -44,7 +44,7 @@ void Dialog2::newFunc()
 
 
     filenm = QFileDialog::getSaveFileName(this, tr("Save File"),
-                                          "primary.txt",
+                                          "prime.txt",
                                           tr("Text Files (*.txt)"));
     QFile file(filenm);
     if (!filenm.isEmpty()){

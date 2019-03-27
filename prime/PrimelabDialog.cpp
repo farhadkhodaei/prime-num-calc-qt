@@ -44,7 +44,7 @@ void PrimelabDialog::primecheck_func()
 
 
     filename = QFileDialog::getSaveFileName(this, tr("Save File"),
-                                          "prime.txt",
+                                          "prime_numbers.txt",
                                           tr("Text Files (*.txt)"));
     QFile file(filename);
     if (!filename.isEmpty()){

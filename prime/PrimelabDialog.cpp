@@ -32,7 +32,7 @@ void PrimelabDialog::primecheck_func()
 {
     int row, counter, fromnum, tonum, progress, progressupdated;
 
-    QString ch, st, svm, svm2, fromnum_str, tonum_str, filename;
+    QString fromnum_str, tonum_str, filename;
     int dividedby,dividables;
 
     fromnum_str=ui->FromNumEntrance->toPlainText();

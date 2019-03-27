@@ -49,7 +49,7 @@ void PrimelabDialog::primecheck_func()
     QFile file(filename);
     if (!filename.isEmpty()){
         canceled=0;
-        QString showntext;
+        QString texttowrite;
 
         ui->Status->setText("Running...");
         ui->Status->show();
@@ -77,8 +77,8 @@ void PrimelabDialog::primecheck_func()
             }
             if(dividables!=2)continue;
             row++;
-           showntext.sprintf("%20d         %20d\n",row,counter);
-           file.write(showntext.toUtf8(),50);
+           texttowrite.sprintf("%20d         %20d\n",row,counter);
+           file.write(texttowrite.toUtf8(),50);
 
         }while(counter<tonum);
         file.close();

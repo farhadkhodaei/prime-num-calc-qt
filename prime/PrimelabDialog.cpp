@@ -18,7 +18,6 @@ PrimelabDialog::PrimelabDialog(QWidget *parent) :
     ui->Status->hide();
     ui->StopButton->hide();
     canceled=0;
-    ui->ProgressBar->setValue(0);
     progressrvalue=0;
     ui->ProgressBar->setValue(progressrvalue);
 

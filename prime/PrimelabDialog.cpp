@@ -76,8 +76,8 @@ void PrimelabDialog::primecheck_func()
             }
             if(dividables!=2)continue;
             row++;
-           texttowrite.sprintf("%20d         %20d\n",row,counter);
-           file.write(texttowrite.toUtf8(),50);
+            texttowrite.sprintf("%20d         %20d\n",row,counter);
+            file.write(texttowrite.toUtf8(),50);
 
         }while(counter<tonum);
         file.close();

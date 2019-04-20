@@ -65,6 +65,7 @@ void PrimelabDialog::primecheck_func()
             for(dividedby=2;dividedby<(counter/2)+1;dividedby++)
             {
                 if((((int)(counter/dividedby))*dividedby)==counter)dividables++;
+                if(dividables>2)break;
             }
             progress=(counter-fromnum)*100/(tonum-fromnum);
             if(progress>progressupdated){
@@ -72,7 +73,6 @@ void PrimelabDialog::primecheck_func()
                 progressrvalue=progress;
                 qApp->processEvents();
                 if (canceled==1)break;
-
             }
             if(dividables!=2)continue;
             row++;

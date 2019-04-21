@@ -29,17 +29,18 @@ PrimelabDialog::~PrimelabDialog()
 }
 void PrimelabDialog::primecheck_func()
 {
-    int row, counter, fromnum, tonum, progress, progressupdated;
+    int row, counter, fromnum, tonum, progress, progressupdated, prime_index_forsave=0,
+            prime_index_forcount=0;
 
     QString fromnum_str, tonum_str, filename;
-    int dividedby,dividables;
+    int dividables;
 
     fromnum_str=ui->FromNumEntrance->toPlainText();
     tonum_str=ui->ToNumEntrance->toPlainText();
     fromnum=fromnum_str.toInt();
     tonum=tonum_str.toInt();
     counter=fromnum-1;
-    if (counter<1)counter=1;
+    if (counter<2)counter=2;
 
 
     filename = QFileDialog::getSaveFileName(this, tr("Save File"),
@@ -58,13 +59,15 @@ void PrimelabDialog::primecheck_func()
 
         file.open(QIODevice::WriteOnly);
         row=0;progress=0;progressupdated=0;
-
+        primes[prime_index_forsave++] = 2;
+        texttowrite.sprintf("%20d         %20d\n",++row,2);
+        file.write(texttowrite.toUtf8(),50);
         do{
             counter++;
             dividables=2;
-            for(dividedby=2;dividedby<(counter/2)+1;dividedby++)
+            for(prime_index_forcount=0;primes[prime_index_forcount]<(counter/2)+1;prime_index_forcount++)
             {
-                if((((int)(counter/dividedby))*dividedby)==counter)dividables++;
+                if((((int)(counter/primes[prime_index_forcount]))*primes[prime_index_forcount])==counter)dividables++;
                 if(dividables>2)break;
             }
             progress=(counter-fromnum)*100/(tonum-fromnum);
@@ -76,6 +79,7 @@ void PrimelabDialog::primecheck_func()
             }
             if(dividables!=2)continue;
             row++;
+            primes[prime_index_forsave++]=counter;
             texttowrite.sprintf("%20d         %20d\n",row,counter);
             file.write(texttowrite.toUtf8(),50);
 

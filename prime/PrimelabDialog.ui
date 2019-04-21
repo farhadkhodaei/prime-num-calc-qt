@@ -53,6 +53,12 @@
    <property name="tabChangesFocus">
     <bool>true</bool>
    </property>
+   <property name="readOnly">
+    <bool>true</bool>
+   </property>
+   <property name="placeholderText">
+    <string>1</string>
+   </property>
   </widget>
   <widget class="QTextEdit" name="ToNumEntrance">
    <property name="geometry">

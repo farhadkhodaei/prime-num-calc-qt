@@ -20,7 +20,7 @@ private:
     Ui::PrimelabDialog *ui;
     int progressrvalue;
     int canceled;
-#define MAX_NUMBER_OF_PRIMES 1000000
+#define MAX_NUMBER_OF_PRIMES 10000000
     int primes[MAX_NUMBER_OF_PRIMES];
 private slots:
     void primecheck_func(void);

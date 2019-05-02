@@ -71,7 +71,7 @@ void PrimelabDialog::primecheck_func()
                 if((((int)(counter/primes[prime_index_forcount]))*primes[prime_index_forcount])==counter)dividables++;
                 if(dividables>2)break;
             }
-            progress=(counter-fromnum)*100/(tonum-fromnum);
+            progress=counter/(tonum/100);
             if(progress>progressupdated){
                 progressupdated=progress;
                 progressrvalue=progress;

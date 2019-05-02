@@ -4,6 +4,7 @@
 #include <QFile>
 #include <QFileDialog>
 #include <QTimer>
+#include <QtMath>
 
 PrimelabDialog::PrimelabDialog(QWidget *parent) :
     QDialog(parent),
@@ -65,7 +66,7 @@ void PrimelabDialog::primecheck_func()
         do{
             counter++;
             dividables=2;
-            for(prime_index_forcount=0;primes[prime_index_forcount]<(counter/2)+1;prime_index_forcount++)
+            for(prime_index_forcount=0;primes[prime_index_forcount]<(int)(qSqrt((qreal)counter)+1);prime_index_forcount++)
             {
                 if((((int)(counter/primes[prime_index_forcount]))*primes[prime_index_forcount])==counter)dividables++;
                 if(dividables>2)break;

@@ -18,10 +18,10 @@ public slots: void TimerEvent();
 
 private:
     Ui::PrimelabDialog *ui;
-    int progressrvalue;
-    int canceled;
-#define MAX_NUMBER_OF_PRIMES 10000000
-    int primes[MAX_NUMBER_OF_PRIMES];
+    unsigned int progressrvalue;
+    unsigned int canceled;
+#define MAX_NUMBER_OF_PRIMES 60000000
+    unsigned int primes[MAX_NUMBER_OF_PRIMES];
 private slots:
     void primecheck_func(void);
     void cancel_func(void);

@@ -30,19 +30,18 @@ PrimelabDialog::~PrimelabDialog()
 }
 void PrimelabDialog::primecheck_func()
 {
-    int row, counter, fromnum, tonum, progress, progressupdated, prime_index_forsave=0,
+    unsigned int row, counter, fromnum, tonum, progress, progressupdated, prime_index_forsave=0,
             prime_index_forcount=0;
 
     QString fromnum_str, tonum_str, filename;
-    int dividables;
+    unsigned int dividables;
 
     fromnum_str=ui->FromNumEntrance->toPlainText();
     tonum_str=ui->ToNumEntrance->toPlainText();
-    fromnum=fromnum_str.toInt();
-    tonum=tonum_str.toInt();
-    counter=fromnum-1;
-    if (counter<2)counter=2;
+    fromnum=(unsigned int)fromnum_str.toInt();
+    tonum=(unsigned int)tonum_str.toInt();
 
+    counter=2;
 
     filename = QFileDialog::getSaveFileName(this, tr("Save File"),
                                           "prime_numbers.txt",
@@ -61,14 +60,14 @@ void PrimelabDialog::primecheck_func()
         file.open(QIODevice::WriteOnly);
         row=0;progress=0;progressupdated=0;
         primes[prime_index_forsave++] = 2;
-        texttowrite.sprintf("%20d         %20d\n",++row,2);
-        file.write(texttowrite.toUtf8(),50);
+        texttowrite.sprintf("%10d     %10d\n",++row,2);
+        file.write(texttowrite.toUtf8(),26);
         do{
             counter++;
             dividables=2;
-            for(prime_index_forcount=0;primes[prime_index_forcount]<(int)(qSqrt((qreal)counter)+1);prime_index_forcount++)
+            for(prime_index_forcount=0;primes[prime_index_forcount]<(unsigned int)(qSqrt((qreal)counter)+1);prime_index_forcount++)
             {
-                if((((int)(counter/primes[prime_index_forcount]))*primes[prime_index_forcount])==counter)dividables++;
+                if((((unsigned int)(counter/primes[prime_index_forcount]))*primes[prime_index_forcount])==counter)dividables++;
                 if(dividables>2)break;
             }
             progress=counter/(tonum/100);
@@ -81,8 +80,8 @@ void PrimelabDialog::primecheck_func()
             if(dividables!=2)continue;
             row++;
             primes[prime_index_forsave++]=counter;
-            texttowrite.sprintf("%20d         %20d\n",row,counter);
-            file.write(texttowrite.toUtf8(),50);
+            texttowrite.sprintf("%10d     %10d\n",row,counter);
+            file.write(texttowrite.toUtf8(),26);
 
         }while(counter<tonum);
         file.close();
